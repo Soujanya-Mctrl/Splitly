@@ -1,0 +1,44 @@
+'use client';
+
+import Link from 'next/link';
+import { useWalletContext } from '../../context/WalletContext';
+import { CreateExpenseForm } from '../../components/CreateExpenseForm';
+import { ArrowLeft, Wallet } from 'lucide-react';
+
+export default function CreatePage() {
+  const { isConnected } = useWalletContext();
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-6">
+      <div className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center gap-1.5 text-sm text-neutral-500 transition-colors hover:text-neutral-200"
+        >
+          <ArrowLeft size={14} />
+          Back
+        </Link>
+        <span className="text-neutral-800">/</span>
+        <h1 className="text-lg font-bold text-neutral-100">Send XLM</h1>
+      </div>
+
+      <div className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 md:p-8">
+        {!isConnected ? (
+          <div className="flex flex-col items-center gap-4 py-10 text-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900">
+              <Wallet size={22} className="text-neutral-400" />
+            </div>
+            <div>
+              <p className="font-semibold text-neutral-200">Wallet not connected</p>
+              <p className="mt-1 text-sm text-neutral-500">
+                Connect your Freighter wallet to send XLM on Stellar Testnet.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <CreateExpenseForm />
+        )}
+      </div>
+    </div>
+  );
+}

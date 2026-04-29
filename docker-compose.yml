@@ -1,0 +1,20 @@
+services:
+  deployer:
+    container_name: splitly_deployer
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/app/contract/target
+    environment:
+      - NETWORK=testnet
+      - DEPLOYER_SECRET_KEY=${DEPLOYER_SECRET_KEY:-}
+    command: ["bash", "scripts/deploy.sh"]
+    stdin_open: true
+    tty: true
+
+volumes:
+  cargo-cache:
+  target-cache:

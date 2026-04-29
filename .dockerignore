@@ -1,0 +1,6 @@
+node_modules
+.next
+contract/target
+target
+.git
+.env

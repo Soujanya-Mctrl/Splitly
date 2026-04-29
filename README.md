@@ -54,6 +54,40 @@ The project is currently in **v5.0** (simulated deployment). The contract is off
 
 ---
 
+## 🧑‍💻 How to Run Locally
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Create a local environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   If you are on Windows PowerShell:
+   ```powershell
+   Copy-Item .env.example .env.local
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open the app at [http://localhost:3000](http://localhost:3000).
+
+5. In Freighter, switch to **Stellar Testnet**, fund your wallet with Friendbot, then connect it from the Splitly UI.
+
+To verify a production build locally:
+```bash
+npm run build
+npm start
+```
+
+---
+
 ## 📜 Smart Contract
 
 The `SplitlyContract` handles the logic for:
